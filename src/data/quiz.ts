@@ -1,4 +1,6 @@
-const questions = [
+import { QuizQuestion } from "./types";
+
+const questions: QuizQuestion[] = [
   {
     id: 1,
     prompt:
