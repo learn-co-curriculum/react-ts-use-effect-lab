@@ -24,6 +24,9 @@ afterEach(() => {
 // const onChange = jest.fn();
 test("creates an interval with setTimeout", () => {
   render(<Question question={testQuestion} onAnswered={noop} />);
+  act(() => {
+    jest.advanceTimersByTime(1000);
+  });
   expect(setTimeout).toHaveBeenCalled();
 });
 

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { QuizQuestion } from "../data/types";
 
 interface Props {
@@ -9,7 +9,26 @@ interface Props {
 function Question({ question, onAnswered }: Props) {
   const [timeRemaining, setTimeRemaining] = useState(10);
 
-  // add useEffect code
+  useEffect(() => {
+    if (timeRemaining === 0) {
+      setTimeRemaining(10);
+      onAnswered(false);
+      return; // exit early!
+    }
+
+    // set up a timeout to run after 1 second
+    const timerId = setTimeout(() => {
+      // decrement the time remaining
+      setTimeRemaining((timeRemaining) => timeRemaining - 1);
+    }, 1000);
+
+    // clean up after the timeout in case the component unmounts before the timer is done
+    return function () {
+      clearTimeout(timerId);
+    };
+  }, [timeRemaining, onAnswered]);
+  // we want to run the effect every time timeRemaining changes
+  // onAnswered is also a dependency, even though it doesn't change
 
   function handleAnswer(isCorrect: boolean) {
     setTimeRemaining(10);
