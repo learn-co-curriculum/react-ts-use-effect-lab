@@ -18,10 +18,15 @@ it needs.
 The feature we're going to build out using `useEffect` is a **countdown timer**,
 so that the user has to answer each question within 10 seconds.
 
+> **Tip**: While working on the lab, feel free to lower the time to 1 second to
+> make manually testing it quicker. Just don't forget to change it back to 10
+> seconds before running `npm test` at the end to ensure you've completed all
+> deliverables correctly!
+
 ## Deliverables
 
-When the `Question` component renders, create a side effect using `useEffect` and
-use `setTimeout` to run a callback function after 1 second.
+When the `Question` component renders, create a side effect using `useEffect`
+and use `setTimeout` to run a callback function after 1 second.
 
 Inside the callback function for `setTimeout`, use the `setTimeRemaining`
 function to decrease the amount of time remaining by 1 every 1 second.

@@ -1,11 +1,17 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import { QuizQuestion } from "../data/types";
 
-function Question({ question, onAnswered }) {
+interface Props {
+  question: QuizQuestion;
+  onAnswered(correct: boolean): void;
+}
+
+function Question({ question, onAnswered }: Props) {
   const [timeRemaining, setTimeRemaining] = useState(10);
 
   // add useEffect code
 
-  function handleAnswer(isCorrect) {
+  function handleAnswer(isCorrect: boolean) {
     setTimeRemaining(10);
     onAnswered(isCorrect);
   }
